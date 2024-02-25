@@ -56,7 +56,7 @@ Las pruebas unitarias se pueden ejecutar mediante el comando:
 
 ## NOTA
 
-1. *cree primero la base datos CastorEmployees:
+1. *cree primero la base datos AccountsDB:
    ```shell
    CREATE DATABASE "AccountsDB"
     WITH
