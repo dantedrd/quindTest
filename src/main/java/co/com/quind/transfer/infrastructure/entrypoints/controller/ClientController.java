@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {})
 public class ClientController {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     private final CreateClientUseCase createClientUseCase;
 

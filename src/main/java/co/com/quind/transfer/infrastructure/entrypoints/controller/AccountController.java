@@ -21,7 +21,7 @@ import java.util.Objects;
 @RequestMapping("/account")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {})
 public class AccountController {
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     AccountUseCase accountUseCase;
 

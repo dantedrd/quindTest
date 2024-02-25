@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/transfer")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {})
 public class TransferController {
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TransferController.class);
 
     private final TransferUseCase transferUseCase;
 

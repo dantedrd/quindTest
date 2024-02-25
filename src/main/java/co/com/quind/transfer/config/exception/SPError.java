@@ -1,31 +1,5 @@
 package co.com.quind.transfer.config.exception;
 
-/**
- * Enumerates standard error codes and messages for consistent error handling across the application.
- * This enumeration centralizes the definitions of error codes and their corresponding messages,
- * promoting uniformity in error responses and simplification of error diagnosis.
- *
- * <p>Each enumerated value represents a specific type of error, associated with a unique error code
- * and a descriptive message. These values can be used throughout the application to ensure a
- * standardized response to different error conditions.</p>
- *
- * <p>Error codes include but are not limited to:</p>
- * <ul>
- *     <li>GENERIC_ERROR: For general, uncontrolled errors.</li>
- *     <li>APP_LOAD_ERROR: Issues encountered during application startup or loading.</li>
- *     <li>DATABASE_CONNECTION_ERROR: Failures in establishing database connections.</li>
- *     <li>INVALID_ARGUMENT_ERROR: Invalid arguments provided to methods or functions.</li>
- *     <li>INVALID_REQUEST_ERROR: Malformed requests such as unreadable or missing message bodies.</li>
- *     <li>INVALID_PARAMS_ERROR: Requests containing invalid or malformed data.</li>
- *     <li>OPERATION_ADAPTER_SAVE_ERROR: Issues saving records to the database.</li>
- *     <li>OPERATION_ADAPTER_FIND_ERROR: Issues retrieving records from the database.</li>
- *     <li>OPERATION_SERVICE_ERROR_CALCULATE: Errors in mathematical operation calculations.</li>
- *     <li>OPERATION_USE_CASE_ERROR_CALCULATE: Failures in business logic or operation execution during calculation use cases.</li>
- *     <li>OPERATION_CONTROLLER_ERROR_CALCULATE: Failures in controller layer during calculation processing.</li>
- *     <li>OPERATION_USE_CASE_ERROR_RESULTS: Failures in business logic or operation execution when retrieving results.</li>
- *     <li>OPERATION_CONTROLLER_ERROR_RESULTS: Failures in controller layer when processing result retrieval.</li>
- * </ul>
- */
 public enum SPError {
     INVALID_AGE_CLIENT(1001, "El cliente es menor de edad"),
     INVALID_CLIENT_HAS_PRODUCTS(1002, "El cliente tiene productos"),

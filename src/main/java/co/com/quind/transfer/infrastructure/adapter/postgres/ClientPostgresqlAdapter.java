@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class ClientPostgresqlAdapter implements ClientRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmployerPostgresqlAdapter.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClientPostgresqlAdapter.class);
     private final ClientDbRepository clientDbRepository;
 
 
