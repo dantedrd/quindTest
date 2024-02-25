@@ -1,7 +1,7 @@
-# Test back castor
+# Test QUIND
 
 ## Descripción
-test back castor es una aplicación Spring Boot desarrollada para guardar los datos de emepleados atraves de una API REST.
+test back para QUIND es una aplicación Spring Boot desarrollada para guardar los datos de transferencias atraves de una API REST.
 
 ## Características
 - **Spring Boot 3.2.1**: Framework para facilitar la configuración y despliegue.
@@ -26,10 +26,23 @@ test back castor es una aplicación Spring Boot desarrollada para guardar los da
 
 ## Uso de la API
 La aplicación expone dos endpoints principales:
-1. **POST /api/v1/employee**: Guardar empleado.
-   - **Cuerpo de la petición**: JSON con los campos de empleado.
+1. **POST /api/v1/client**: Guardar cliente.
+   - **Cuerpo de la petición**: JSON con los campos del cliente.
    - **Respuesta**: JSON con el resultado.
-2. **GET /api/v1/employee**: Recupera todos los empleados.
+
+2. **DELETE /api/v1/client/:idCliente**: Eliminar cliente.
+   - **Respuesta**: JSON con el resultado.
+   
+3. **POST /api/v1/account**: Guardar cuenta.
+    - **Cuerpo de la petición**: JSON con los campos de la cuenta.
+    - **Respuesta**: JSON con el resultado.
+
+4. **PUT /api/v1/account**: Actualizar cuenta.
+   - **Cuerpo de la petición**: JSON con los campos de la cuenta.
+   - **Respuesta**: JSON con el resultado.
+
+5. **DELETE /api/v1/account/:idAccount**: Eliminar cuenta.
+   - **Respuesta**: JSON con el resultado.
 
 La documentación detallada de la API y los esquemas de solicitud y respuesta están disponibles a través de la interfaz de [Swagger](http://localhost:8080/api/v1/swagger-ui/index.html#/).
 
@@ -45,7 +58,7 @@ Las pruebas unitarias se pueden ejecutar mediante el comando:
 
 1. *cree primero la base datos CastorEmployees:
    ```shell
-   CREATE DATABASE "CastorEmployees"
+   CREATE DATABASE "AccountsDB"
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -55,21 +68,4 @@ Las pruebas unitarias se pueden ejecutar mediante el comando:
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
-
-2  * luego de que cree la base datos CastorEmployees ejecute el programa y 
-     el creeara automaticamente las tablas con sus relacciones.
     
-3  *Luego ejecute este script para alimentar la tabla posiciones:*
-   ```shell
-    INSERT INTO public."position"
-   (id, "name")
-   VALUES(nextval('position_id_seq'::regclass), 'Scrum Master');
-   INSERT INTO public."position"
-   (id, "name")
-   VALUES(nextval('position_id_seq'::regclass), 'Desarrollador');
-   INSERT INTO public."position"
-   (id, "name")
-   VALUES(nextval('position_id_seq'::regclass), 'QA');
-   INSERT INTO public."position"
-   (id, "name")
-   VALUES(nextval('position_id_seq'::regclass), 'PO');

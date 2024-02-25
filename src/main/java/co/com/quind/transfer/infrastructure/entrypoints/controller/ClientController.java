@@ -4,6 +4,10 @@ import co.com.quind.transfer.application.usecase.CreateClientUseCase;
 import co.com.quind.transfer.domain.models.Client;
 import co.com.quind.transfer.infrastructure.entrypoints.model.ClientRequest;
 import co.com.quind.transfer.infrastructure.entrypoints.model.GenericResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +33,17 @@ public class ClientController {
         this.createClientUseCase = createClientUseCase;
     }
 
-
+    @Operation(
+            summary = "created client",
+            description = "created client",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "delete client",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @PostMapping
     public ResponseEntity<Object> createClient(@Valid @RequestBody ClientRequest client){
         Client responseClient=this.createClientUseCase.createClient(client.toDomain());
@@ -38,6 +52,17 @@ public class ClientController {
                 .body(GenericResponse.of(HttpStatus.CREATED.value(),"Cliente creado correctamente",responseClient));
     }
 
+    @Operation(
+            summary = "delete account",
+            description = "delete account",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "account deleted",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @DeleteMapping("/{nit}")
     public ResponseEntity<Object> deleteClient(@PathVariable String nit){
         this.createClientUseCase.deleteClient(nit);

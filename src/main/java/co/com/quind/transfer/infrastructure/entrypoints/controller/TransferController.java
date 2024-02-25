@@ -4,6 +4,10 @@ import co.com.quind.transfer.application.usecase.TransferUseCase;
 import co.com.quind.transfer.domain.models.Transfer;
 import co.com.quind.transfer.infrastructure.entrypoints.model.GenericResponse;
 import co.com.quind.transfer.infrastructure.entrypoints.model.TransferRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +32,17 @@ public class TransferController {
         this.transferUseCase = transferUseCase;
     }
 
-
+    @Operation(
+            summary = "procces transfer",
+            description = "procces transfer",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "procces transfer",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @PostMapping
     public ResponseEntity<Object> proccesTransfer(@Valid @RequestBody TransferRequest transferRequest){
         Transfer responseTransfer=this.transferUseCase.proccess(transferRequest.toDomain());

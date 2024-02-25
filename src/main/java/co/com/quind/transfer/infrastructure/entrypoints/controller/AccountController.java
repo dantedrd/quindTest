@@ -4,6 +4,10 @@ import co.com.quind.transfer.application.usecase.AccountUseCase;
 import co.com.quind.transfer.domain.models.Account;
 import co.com.quind.transfer.infrastructure.entrypoints.model.AccountRequest;
 import co.com.quind.transfer.infrastructure.entrypoints.model.GenericResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +29,18 @@ public class AccountController {
         this.accountUseCase = accountUseCase;
     }
 
+
+    @Operation(
+            summary = "Create account",
+            description = "Create account",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "account created",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @PostMapping
     public ResponseEntity<Object> createClient(@Valid @RequestBody AccountRequest account){
         Account responseAccount=this.accountUseCase.createAccount(account.toDomain());
@@ -33,6 +49,17 @@ public class AccountController {
                 .body(GenericResponse.of(HttpStatus.CREATED.value(),"Cuenta creada correctamente",responseAccount));
     }
 
+    @Operation(
+            summary = "update account",
+            description = "update account",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "update account",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @PutMapping
     public ResponseEntity<Object> updateAccount(@Valid @RequestBody AccountRequest account){
         Account responseAccount=this.accountUseCase.findAccountById(account.getAccountNumber());
@@ -44,6 +71,17 @@ public class AccountController {
                 .body(GenericResponse.of(HttpStatus.CREATED.value(),"Cuenta creada correctamente",responseUpdatedAccount));
     }
 
+    @Operation(
+            summary = "delete account",
+            description = "delete account",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "delete account",
+                            content = @Content(schema = @Schema(implementation = ResponseEntity.class))
+                    )
+            }
+    )
     @DeleteMapping("/{accountNumber}")
     public ResponseEntity<Object> deleteAccount(@PathVariable String accountNumber){
         this.accountUseCase.deleteAccount(accountNumber);
