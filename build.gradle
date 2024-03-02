@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id "org.sonarqube" version "3.5.0.2730"
 }
 
 group = 'co.com.castor'
@@ -9,6 +10,14 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id "org.sonarqube" version "3.5.0.2730"
+	id 'jacoco'
 }
 
 repositories {
@@ -27,8 +36,20 @@ dependencies {
 	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+sonarqube {
+	properties {
+		property "sonar.host.url", "https://sonarcloud.io" // Cambia la URL según tu configuración
+		property "sonar.login", "tu_usuario" // Si se requiere autenticación
+		property "sonar.password", "tu_contraseña" // Si se requiere autenticación
+		property "sonar.projectName", "Nombre de tu proyecto"
+		property "sonar.projectKey", "clave_única_del_proyecto"
+		// Otras propiedades de SonarQube según sea necesario
+	}
 }
